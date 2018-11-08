@@ -109,8 +109,26 @@ public class FUpgradesGUI implements Listener {
             }
             int spawnerLevel = fme.getFaction().getUpgrade("Spawner");
             if (e.getCurrentItem().equals(spawnerItem)) {
-                if (spawnerLevel == 3) {
+                if (spawnerLevel == 5) {
                     return;
+                }
+                if (spawnerLevel == 4) {
+                    int cost = SavageFactions.plugin.getConfig().getInt("fupgrades.MainMenu.Spawners.Cost.level-5");
+                    if (! hasMoney(fme, cost)) {
+                        return;
+                    }
+                    takeMoney(fme, cost);
+                    fme.getFaction().setUpgrades("Spawner", 5);
+                    fme.getPlayer().closeInventory();
+                }
+                if (spawnerLevel == 3) {
+                    int cost = SavageFactions.plugin.getConfig().getInt("fupgrades.MainMenu.Spawners.Cost.level-4");
+                    if (! hasMoney(fme, cost)) {
+                        return;
+                    }
+                    takeMoney(fme, cost);
+                    fme.getFaction().setUpgrades("Spawner", 4);
+                    fme.getPlayer().closeInventory();
                 }
                 if (spawnerLevel == 2) {
                     int cost = SavageFactions.plugin.getConfig().getInt("fupgrades.MainMenu.Spawners.Cost.level-3");
@@ -319,6 +337,10 @@ public class FUpgradesGUI implements Listener {
             spawnerItem.setAmount(2);
         } else if (spawnerLevel == 3) {
             spawnerItem.setAmount(3);
+        } else if (spawnerLevel == 4) {
+            spawnerItem.setAmount(4);
+        } else if (spawnerLevel == 5) {
+            spawnerItem.setAmount(5);
         }
         Material chestMaterial = Material.getMaterial(SavageFactions.plugin.getConfig().getString("fupgrades.MainMenu.Chest.ChestItem.Type"));
         int chesttAmt = SavageFactions.plugin.getConfig().getInt("fupgrades.MainMenu.Chest.ChestItem.Amount");

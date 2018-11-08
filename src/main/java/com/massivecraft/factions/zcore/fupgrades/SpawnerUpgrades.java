@@ -25,6 +25,15 @@ public class SpawnerUpgrades implements Listener {
                     int rate = SavageFactions.plugin.getConfig().getInt("fupgrades.MainMenu.Spawners.Spawner-Boost.level-3");
                     lowerSpawnerDelay(e, rate);
                 }
+                if (level == 4) {
+                    int rate = SavageFactions.plugin.getConfig().getInt("fupgrades.MainMenu.Spawners.Spawner-Boost.level-4");
+                    lowerSpawnerDelay(e, rate);
+                }
+                if (level == 5) {
+                    int rate = SavageFactions.plugin.getConfig().getInt("fupgrades.MainMenu.Spawners.Spawner-Boost.level-5");
+                    lowerSpawnerDelay(e, rate);
+                }
+
 
             }
         }
